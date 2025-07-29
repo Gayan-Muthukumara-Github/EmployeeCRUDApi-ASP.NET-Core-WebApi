@@ -1,4 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using EmployeeCRUDApi.Models;
+using EmployeeCRUDApi.Interfaces;
+using EmployeeCRUDApi.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<EmployeeDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection")));
+
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
 // Add services to the container.
 
