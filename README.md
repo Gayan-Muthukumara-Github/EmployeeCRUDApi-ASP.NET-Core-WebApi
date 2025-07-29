@@ -1,6 +1,6 @@
 # EmployeeCRUDApi-ASP.NET-Core-WebApi
 
-This is a simple CRUD (Create, Read, Update, Delete) Web API built with **.NET 8** and **Entity Framework Core (Database-First)**. The API allows you to manage employee records stored in a SQL Server database.
+This is a simple CRUD (Create, Read, Update, Delete) Web API built with **.NET 8** and **Entity Framework Core (Database-First)**.
 
 ---
 
