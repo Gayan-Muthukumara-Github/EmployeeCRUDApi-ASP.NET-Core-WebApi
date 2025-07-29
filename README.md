@@ -16,7 +16,7 @@ This is a simple CRUD (Create, Read, Update, Delete) Web API built with **.NET 8
 
 ---
 
-## 🛠Technologies Used
+## Technologies Used
 
 - .NET 8 Web API
 - Entity Framework Core 8 (Database-First)
@@ -53,7 +53,7 @@ EmployeeApi/
 
 ---
 
-## ⚙Setup Instructions
+## Setup Instructions
 
 ### 1. Clone the Repository
 
