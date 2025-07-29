@@ -4,19 +4,19 @@ This is a simple CRUD (Create, Read, Update, Delete) Web API built with **.NET 8
 
 ---
 
-## 📌 Features
+## Features
 
-- ✅ Get all employees
-- ✅ Get an employee by ID
-- ✅ Add a new employee
-- ✅ Update an existing employee
-- ✅ Delete an employee
-- ✅ API testing with Swagger UI
-- ✅ Clean architecture with Repository Pattern (optional)
+- Get all employees
+- Get an employee by ID
+- Add a new employee
+- Update an existing employee
+- Delete an employee
+- API testing with Swagger UI
+- Clean architecture with Repository Pattern
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - .NET 8 Web API
 - Entity Framework Core 8 (Database-First)
@@ -26,48 +26,57 @@ This is a simple CRUD (Create, Read, Update, Delete) Web API built with **.NET 8
 
 ---
 
-## 📂 Folder Structure
+## Folder Structure
 
 ```
 
 EmployeeApi/
 ├── Controllers/
 │   └── EmployeesController.cs
+│
+├── Interfaces/
+│   └── IEmployeeRepository.cs
+│
 ├── Models/                
 │   ├── Employee.cs
 │   └── EmployeeDbContext.cs
+│
+├── Repositories/
+│   └── EmployeeRepository.cs
+│
 ├── Program.cs
 ├── appsettings.json
 └── README.md
 
+
 ````
 
 ---
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
-### 1. 📥 Clone the Repository
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/EmployeeApi.git
-cd EmployeeApi
+git clone https://github.com/Gayan-Muthukumara-Github/EmployeeCRUDApi-ASP.NET-Core-WebApi
+cd EmployeeCRUDApi-ASP.NET-Core-WebApi
 ````
 
 ---
 
-### 2. 🔧 Configure Database Connection
+### 2. Configure Database Connection
 
 Update `appsettings.json` with your actual SQL Server connection string:
 
 ```json
 "ConnectionStrings": {
-  "DefaultConnection": "Server=.;Database=YourDatabaseName;Trusted_Connection=True;"
+  "DBConnection": "Server=<YourServerName>;Database=EmployeeDB;Trusted_Connection=True;TrustServerCertificate=True;"
 }
 ```
 
 ---
 
-### 3. 📦 Install Required NuGet Packages
+### 3. Install Required NuGet Packages
 
 ```bash
 Microsoft.EntityFrameworkCore.SqlServer
@@ -77,21 +86,7 @@ Swashbuckle.AspNetCore
 
 ---
 
-### 4. 🧬 Scaffold the Models and DbContext
-
-```bash
-dotnet ef dbcontext scaffold "Server=.;Database=YourDatabaseName;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models
-```
-
-> Make sure `dotnet-ef` is installed:
->
-> ```bash
-> dotnet tool install --global dotnet-ef
-> ```
-
----
-
-### 5. 🚀 Run the Application
+### 4. Run the Application
 
 ```bash
 dotnet run or use run oprtion in visual studio
@@ -100,12 +95,12 @@ dotnet run or use run oprtion in visual studio
 Visit Swagger UI:
 
 ```
-https://localhost:5001/swagger
+https://localhost:7036/swagger
 ```
 
 ---
 
-## 📮 API Endpoints
+## API Endpoints
 
 | Method | Endpoint            | Description              |
 | ------ | ------------------- | ------------------------ |
@@ -117,21 +112,20 @@ https://localhost:5001/swagger
 
 ---
 
-## 🧪 Testing
+## Testing
 
 Use Swagger UI or Postman to test the API endpoints.
 
 ---
 
-## 📌 Notes
+## Notes
 
-* This project uses **Database-First** approach: Tables must exist before scaffolding.
+* This project uses **Database-First** approach.
 * Swagger is enabled for testing and documentation.
-* You can extend it with authentication, DTOs, logging, or unit tests as needed.
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 Gayan Muthukumara
 Email: mglmuthukumara@gmail.com
