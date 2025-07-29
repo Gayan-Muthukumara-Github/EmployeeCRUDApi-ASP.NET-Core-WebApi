@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EmployeeCRUDApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1baa7367cd42d5e2352113a71a008c9fbfe21693")]
 [assembly: System.Reflection.AssemblyProductAttribute("EmployeeCRUDApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EmployeeCRUDApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
