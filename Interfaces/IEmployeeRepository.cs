@@ -4,12 +4,12 @@ namespace EmployeeCRUDApi.Interfaces
 {
     public interface IEmployeeRepository
     {
-        Task<IEnumerable<Employee>> GetAllAsync();
-        Task<Employee?> GetByIdAsync(int Id);
-        Task<Employee> AddAsync(Employee employee);
-        Task<bool> UpdateAsync(Employee employee);
-        Task<bool> DeleteAsync(int Id);
-        Task<bool> ExistsAsync(int Id);
+        Task<IEnumerable<Employee>> GetAllEmployeesAsync();
+        Task<Employee?> GetEmployeeByIdAsync(int Id);
+        Task<Employee> AddNewEmployeeAsync(Employee employee);
+        Task<bool> UpdateEmployeeAsync(Employee employee);
+        Task<bool> DeleteEmployeeAsync(int Id);
+        Task<bool> ExistsEmployeeAsync(int Id);
 
     }
 }

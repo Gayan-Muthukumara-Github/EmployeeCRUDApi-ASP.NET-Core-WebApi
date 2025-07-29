@@ -16,11 +16,11 @@ namespace EmployeeCRUDApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Employee>>> GetAllEmployees()
         {
             try
             {
-                var employees = await _employeeRepository.GetAllAsync();
+                var employees = await _employeeRepository.GetAllEmployeesAsync();
                 return Ok(employees);
             }
             catch (Exception ex)
@@ -29,11 +29,11 @@ namespace EmployeeCRUDApi.Controllers
             }
         }
         [HttpGet("{Id}")]
-        public async Task<ActionResult<Employee>> GetById(int Id)
+        public async Task<ActionResult<Employee>> GetEmployeeById(int Id)
         {
             try
             {
-                var employee = await _employeeRepository.GetByIdAsync(Id);
+                var employee = await _employeeRepository.GetEmployeeByIdAsync(Id);
                 if(employee == null)
                 {
                     return NotFound();
@@ -46,12 +46,12 @@ namespace EmployeeCRUDApi.Controllers
             }
         }
         [HttpPost]
-        public async Task<ActionResult<Employee>> Create(Employee employee)
+        public async Task<ActionResult<Employee>> AddNewEmployee(Employee employee)
         {
             try
             {
-                var createdEmployee = await _employeeRepository.AddAsync(employee);
-                return CreatedAtAction(nameof(GetById), new { id = createdEmployee.Id }, createdEmployee);
+                var createdEmployee = await _employeeRepository.AddNewEmployeeAsync(employee);
+                return CreatedAtAction(nameof(GetEmployeeById), new { id = createdEmployee.Id }, createdEmployee);
             }
             catch (Exception ex)
             {
@@ -59,7 +59,7 @@ namespace EmployeeCRUDApi.Controllers
             }
         }
         [HttpPut("{Id}")]
-        public async Task<ActionResult<Employee>> Update (int Id,Employee employee)
+        public async Task<ActionResult<Employee>> UpdateEmployee(int Id,Employee employee)
         {
             try
             {
@@ -67,12 +67,12 @@ namespace EmployeeCRUDApi.Controllers
                 {
                     return BadRequest("Employee ID mismatch");
                 }
-                var existingEmployee = await _employeeRepository.ExistsAsync(Id);
+                var existingEmployee = await _employeeRepository.ExistsEmployeeAsync(Id);
                 if (!existingEmployee)
                 {
                     return NotFound();
                 }
-                var updatedEmployee = await _employeeRepository.UpdateAsync(employee);
+                var updatedEmployee = await _employeeRepository.UpdateEmployeeAsync(employee);
                 return Ok(updatedEmployee);
             }
             catch (Exception ex)
@@ -81,16 +81,16 @@ namespace EmployeeCRUDApi.Controllers
             }
         }
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> Delete(int Id)
+        public async Task<IActionResult> DeleteEmployee(int Id)
         {
             try
             {
-                var existingEmployee = await _employeeRepository.ExistsAsync(Id);
+                var existingEmployee = await _employeeRepository.ExistsEmployeeAsync(Id);
                 if (!existingEmployee)
                 {
                     return NotFound();
                 }
-                await _employeeRepository.DeleteAsync(Id);
+                await _employeeRepository.DeleteEmployeeAsync(Id);
                 return NoContent();
             }
             catch (Exception ex)

@@ -13,25 +13,33 @@ namespace EmployeeCRUDApi.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Employee>> GetAllAsync()
+        public async Task<IEnumerable<Employee>> GetAllEmployeesAsync()
         {
             return await _context.Employees.ToListAsync();
         }
 
-        public async Task<Employee?> GetByIdAsync(int Id)
+        public async Task<Employee?> GetEmployeeByIdAsync(int Id)
         { 
             return await _context.Employees.FindAsync(Id);
         }
 
-        public async Task<Employee> AddAsync(Employee employee)
+        public async Task<Employee> AddNewEmployeeAsync(Employee employee)
         {
+            if (employee == null)
+            {
+                throw new ArgumentNullException(nameof(employee));
+            }
             _context.Employees.Add(employee);
             await _context.SaveChangesAsync();
             return employee;
         }
 
-        public async Task<bool> UpdateAsync(Employee employee)
+        public async Task<bool> UpdateEmployeeAsync(Employee employee)
         {
+            if (!await ExistsEmployeeAsync(employee.Id))
+            {
+                return false;
+            } 
             _context.Entry(employee).State = EntityState.Modified;
             try
             {
@@ -40,11 +48,11 @@ namespace EmployeeCRUDApi.Repositories
             }
             catch (DbUpdateConcurrencyException)
             {
-                return await ExistsAsync(employee.Id);
+                return await ExistsEmployeeAsync(employee.Id);
             }
         }
 
-        public async Task<bool> DeleteAsync(int Id)
+        public async Task<bool> DeleteEmployeeAsync(int Id)
         {
             var employee = await _context.Employees.FindAsync(Id);
             if(employee == null) 
@@ -57,8 +65,12 @@ namespace EmployeeCRUDApi.Repositories
 
         }
         
-        public async Task<bool> ExistsAsync(int Id)
+        public async Task<bool> ExistsEmployeeAsync(int Id)
         {
+            if (Id <= 0)
+            {
+                return false;
+            }  
             return await _context.Employees.AnyAsync(e => e.Id == Id);
         }
 
